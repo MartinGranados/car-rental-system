@@ -1,12 +1,7 @@
 <!-- Uses base.html as a base and adds to that base. -->
 {% extends "reservations/base.html" %}
 <!-- anything between block content tags is what usually goes between body tags.-->
+{% load crispy_forms_tags %}
 {% block content %}
-
-    {% for vehicle in vehicles %}
-    <h1>{{ vehicle.vehicle_type }}</h1>
-    {{ vehicle.seats }} Seats
-    ${{ vehicle.price_per_day }}/day
-    {% endfor %}
-
+    <h1>{{ user.username }}</h1>
 {% endblock content %}

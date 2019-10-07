@@ -19,4 +19,4 @@ class Vehicle(models.Model):
         available = False
 
     def __str__(self):
-        return str(self.seats) + ' seat ' + self.vehicle_type
+        return str(self.seats) + ' Seat ' + self.vehicle_type.title()
