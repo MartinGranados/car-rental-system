@@ -5,6 +5,7 @@
 
     {% for vehicle in vehicles %}
     <h1>{{ vehicle.vehicle_type }}</h1>
+    <img class="rounded-circle account-img" src="{{ vehicle.image.url }}">
     {{ vehicle.seats }} Seats
     ${{ vehicle.price_per_day }}/day
     {% endfor %}

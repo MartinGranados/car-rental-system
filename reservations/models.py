@@ -14,6 +14,7 @@ class Vehicle(models.Model):
     rented = models.BooleanField(default = False)
     available = models.BooleanField(default = True)
     reserved_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='vehicle_pics')
 
     if rented == True:
         available = False
