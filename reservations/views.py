@@ -4,7 +4,7 @@ from .models import Vehicle
 
 
 def home(request):
-    context = {
-        'vehicles': Vehicle.objects.filter(available=True)
+    available_vehicles = {
+        'vehicles': Vehicle.objects.filter(vehicle_status = 'Available')
     }
-    return render(request, 'reservations/home.html', context, {'title': 'About'})
+    return render(request, 'reservations/home.html', available_vehicles, {'title': 'About'})
