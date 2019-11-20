@@ -8,3 +8,6 @@ def home(request):
         'vehicles': Vehicle.objects.filter(vehicle_status = 'Available')
     }
     return render(request, 'reservations/home.html', available_vehicles, {'title': 'About'})
+
+def filters(request):
+    return render(request, 'reservations/filters.html')

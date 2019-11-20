@@ -1,13 +1,27 @@
 <!-- Uses base.html as a base and adds to that base. -->
 {% extends "reservations/base.html" %}
+{% block title %}My Page Title{% endblock title %}
 <!-- anything between block content tags is what usually goes between body tags.-->
 {% block content %}
 
     {% for vehicle in vehicles %}
-    <h1>{{ vehicle.vehicle_type }}</h1>
-    <img class="rounded-circle account-img" src="{{ vehicle.image.url }}">
-    {{ vehicle.seats }} Seats
-    ${{ vehicle.price_per_day }}/day
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img class="card-img" src="{{ vehicle.image.url }}">
+            </div>
+            <!-- <div class="col-md-8"> -->
+                <div class="card-body col-md-4">
+                    <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
+                    <p class="card-text"></p>{{ vehicle.seats }} seats
+                </div>
+                <div class="card-body col-md-4">
+                        ${{ vehicle.price_per_day }}/day
+                        <button class="btn btn-primary btn-block">Reserve</button>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
     {% endfor %}
 
 {% endblock content %}
