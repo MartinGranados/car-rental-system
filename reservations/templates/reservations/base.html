@@ -9,6 +9,16 @@
     <!-- import bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'reservations/main.css' %}">
+    <style>
+        .jumbotron {
+            color: white;
+            background-image: url("/media/hero.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 90%;
+            height: 50vh;
+            }
+    </style>
     <!-- Not working for some reason, supposed to check for a title in the render 
          function, and display it if its there, else display a default title. 
     -->
@@ -35,7 +45,6 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{% url 'main-home' %}">Home</a>
-                <a class="nav-item nav-link" href="/about">About</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">

@@ -4,42 +4,67 @@
 <!-- anything between block content tags is what usually goes between body tags.-->
 {% block content %}
 
-<form>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault01">First name</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Last name</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefaultUsername">Username</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend2">@</span>
-              </div>
-              <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
-            </div>
-          </div>
-        </div>
+
+<form method="POST"> {% csrf_token %}
+        <!-- begin row -->
         <div class="form-row">
           <div class="col-md-6 mb-3">
-            <label for="validationDefault03">City</label>
-            <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+            <label for="start_date">Start Date</label>
+            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date">
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationDefault04">State</label>
-            <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+          <div class="col-md-6 mb-3">
+            <label for="end_date">End Date</label>
+            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date">
           </div>
+          <!-- end row -->
+          
+          <!-- begin row -->
+        </div>
+        <div class="form-row">
+            <div class="col-md-9 mb-3">
+                <label for="vehicle_type">Vehicle Type</label>
+                <select class="form-control" name="vehicle_type">
+                  <option value="car">Car</option>
+                  <option value="truck">Truck</option>
+                  <option value="van">Van</option>
+                  <option value="suv">SUV</option>
+                </select>
+            </div>
           <div class="col-md-3 mb-3">
-            <label for="validationDefault05">Zip</label>
-            <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+            <label for="number_of_seats">Seats</label>
+            <select class="form-control" name="number_of_seats">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="12">12</option>
+              </select>
           </div>
         </div>
         
         <button class="btn btn-primary" type="submit">Search vehicles</button>
-      </form>
+</form>
+<br><br>
+
+    {% for vehicle in vehicles %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img class="card-img" src="{{ vehicle.image.url }}">
+            </div>
+            <!-- <div class="col-md-8"> -->
+                <div class="card-body col-md-4">
+                    <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
+                    <p class="card-text"></p>{{ vehicle.seats }} seats
+                </div>
+                <div class="card-body col-md-4">
+                        ${{ vehicle.price_per_day }}/day
+                        <button class="btn btn-primary btn-block">Reserve</button>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock content %}
