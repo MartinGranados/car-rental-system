@@ -18,7 +18,14 @@ def filters(request):
         # Still need to figure out how to set a date range and only show vehicles
         # which are available in that date range. May not happen for this project 
         filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_type = request.POST['vehicle_type'], 
-                                                                seats = request.POST['number_of_seats'])}
+                                                                seats = request.POST['number_of_seats'],
+                                                                vehicle_class = request.POST['vehicle_class'],
+                                                                vehicle_status = 'Available')}
+        # display_filtered = []
+        # for item.vehicle_model in filtered_vehicles:
+        #     if display_filtered.count(item) == 0:
+        #         display_filtered.append(item)
+        # single_filtered_vehicles = {'vehicles': display_filtered}
         return render(request, 'reservations/filters.html', filtered_vehicles, {'title': 'Results'})
     # If form has not been filled out yet, show only the form
     return render(request, 'reservations/filters.html')

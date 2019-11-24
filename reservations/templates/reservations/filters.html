@@ -21,15 +21,24 @@
           <!-- begin row -->
         </div>
         <div class="form-row">
-            <div class="col-md-9 mb-3">
-                <label for="vehicle_type">Vehicle Type</label>
-                <select class="form-control" name="vehicle_type">
-                  <option value="car">Car</option>
-                  <option value="truck">Truck</option>
-                  <option value="van">Van</option>
-                  <option value="suv">SUV</option>
-                </select>
-            </div>
+          <div class="col-md-4 mb-3">
+              <label for="vehicle_type">Vehicle Type</label>
+              <select class="form-control" name="vehicle_type">
+                <option value="car">Car</option>
+                <option value="truck">Truck</option>
+                <option value="van">Van</option>
+                <option value="suv">SUV</option>
+              </select>
+          </div>
+          <div class="col-md-5 mb-3">
+              <label for="vehicle_class">Vehicle Class</label>
+              <select class="form-control" name="vehicle_class">
+                <option value="economy">Economy</option>
+                <option value="standard">Standard</option>
+                <option value="sport">Sport</option>
+                <option value="luxury">Luxury</option>
+              </select>
+          </div>
           <div class="col-md-3 mb-3">
             <label for="number_of_seats">Seats</label>
             <select class="form-control" name="number_of_seats">
@@ -42,13 +51,12 @@
               </select>
           </div>
         </div>
-        
         <button class="btn btn-primary" type="submit">Search vehicles</button>
 </form>
 <br><br>
 
     {% for vehicle in vehicles %}
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-4" style="max-width: 840px; padding: 5px;">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img class="card-img" src="{{ vehicle.image.url }}">
@@ -56,14 +64,15 @@
             <!-- <div class="col-md-8"> -->
                 <div class="card-body col-md-4">
                     <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
-                    <p class="card-text"></p>{{ vehicle.seats }} seats
+                    <p class="card-text">{{ vehicle.seats }} seats</p>
                 </div>
                 <div class="card-body col-md-4">
                         ${{ vehicle.price_per_day }}/day
-                        <button class="btn btn-primary btn-block">Reserve</button>
+                        
                 </div>
             <!-- </div> -->
         </div>
+        <button class="btn btn-primary btn-block">Reserve</button>
     </div>
     {% endfor %}
 
