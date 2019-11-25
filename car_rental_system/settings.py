@@ -25,7 +25,7 @@ SECRET_KEY = '^imyfuo7z!%$s=(jhzvzz#4o3y@p29aeqk3$+9tjmvwfet@+zq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['bronco-car-rental-system.herokuapp.com']
+ALLOWED_HOSTS = ['broncorentals.herokuapp.com']
 
 
 # Application definition
