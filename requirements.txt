@@ -4,14 +4,14 @@ chardet==3.0.4
 Click==7.0
 cycler==0.10.0
 decorator==4.4.0
-Django==2.2.1
+Django==2.2.4
 django-crispy-forms==1.7.2
 Flask==1.0.2
 gunicorn==20.0.2
 idna==2.8
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.10.1
 jsonschema==3.0.1
 jupyter-core==4.4.0
 kiwisolver==1.0.1
@@ -34,4 +34,3 @@ traitlets==4.3.2
 urllib3==1.24.3
 virtualenv==16.7.2
 virtualenv-clone==0.5.3
-Werkzeug==0.14.1
