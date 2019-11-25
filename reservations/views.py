@@ -17,10 +17,40 @@ def filters(request):
     if request.method == 'POST':
         # Still need to figure out how to set a date range and only show vehicles
         # which are available in that date range. May not happen for this project 
-        filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_type = request.POST['vehicle_type'], 
-                                                                seats = request.POST['number_of_seats'],
-                                                                vehicle_class = request.POST['vehicle_class'],
-                                                                vehicle_status = 'Available')}
+        if request.POST['vehicle_type'] == 'any':
+            if request.POST['vehicle_class'] == 'any':
+                if request.POST['number_of_seats'] == 'any':
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available')}
+                else:
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
+                                                                            seats=request.POST['number_of_seats'])}
+            else:
+                if request.POST['number_of_seats'] == 'any':
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
+                                                                            vehicle_class=request.POST['vehicle_class'])}
+                else:
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
+                                                                            vehicle_class=request.POST['vehicle_class'], 
+                                                                            seats=request.POST['number_of_seats'])}
+        else:
+            if request.POST['vehicle_class'] == 'any':
+                if request.POST['number_of_seats'] == 'any':
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available',
+                                                                            vehicle_type=request.POST['vehicle_type'])}
+                else:
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available',
+                                                                            vehicle_type=request.POST['vehicle_type'], 
+                                                                            seats=request.POST['number_of_seats'])}
+            else:
+                if request.POST['number_of_seats'] == 'any':
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
+                                                                            vehicle_class=request.POST['vehicle_class'],
+                                                                            vehicle_type=request.POST['vehicle_type'])}
+                else:
+                    filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
+                                                                            vehicle_class=request.POST['vehicle_class'],
+                                                                            vehicle_type=request.POST['vehicle_type'], 
+                                                                            seats=request.POST['number_of_seats'])}
         # display_filtered = []
         # for item.vehicle_model in filtered_vehicles:
         #     if display_filtered.count(item) == 0:
