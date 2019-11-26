@@ -10,11 +10,11 @@
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="start_date">Start Date</label>
-            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date">
+            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date" id="startDate" onblur="compare();">
           </div>
           <div class="col-md-6 mb-3">
             <label for="end_date">End Date</label>
-            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date">
+            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date" id="endDate" onblur="compare();">
           </div>
           <!-- end row -->
           
@@ -49,15 +49,60 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
-                <option value="8">8</option>
+                <option value="7">7</option>
                 <option value="12">12</option>
               </select>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit">Search vehicles</button>
+        <button class="btn btn-primary" type="submit" id="submit">Search vehicles</button>
 </form>
+<script>
+function compare()
+  {
+      var now = new Date()
+      var startDt = document.getElementById("startDate").value;
+      var endDt = document.getElementById("endDate").value;
+  
+      if( (new Date(endDt).getTime() - new Date(startDt).getTime()) > 1209600000)
+      {
+        document.getElementById("longDateError").style.visibility = "visible";
+        document.getElementById("submit").disabled = true;
+        
+      }
+      else if ((now.getTime() - new Date(startDt).getTime()) > 86400000)
+      {
+        document.getElementById("pastDateError").style.visibility = "visible";
+        document.getElementById("submit").disabled = true;
+      }
+      else if ((now.getTime() - new Date(endDt).getTime()) > 86400000)
+      {
+        document.getElementById("pastDateError").style.visibility = "visible";
+        document.getElementById("submit").disabled = true;
+      }
+      else if (new Date(endDt).getTime() < new Date(startDt).getTime())
+      {
+        document.getElementById("endDateError").style.visibility = "visible";
+        document.getElementById("submit").disabled = true;
+      }
+      else 
+      {
+        document.getElementById("longDateError").style.visibility = "hidden";
+        document.getElementById("pastDateError").style.visibility = "hidden";
+        document.getElementById("endDateError").style.visibility = "hidden";
+        document.getElementById("submit").disabled = false;
+      }
+  }</script>
+<div id="longDateError" class="alert alert-danger" role="alert" style="margin-top: 15px; visibility:hidden;">
+  Please contact us to reserve a vehicle for longer than 14 days.
+</div>
+<div id="pastDateError" class="alert alert-danger" role="alert" style="margin-top: 0px; visibility:hidden;">
+  Please choose dates in the present or future.
+</div>
+<div id="endDateError" class="alert alert-danger" role="alert" style="margin-top: 0px; visibility:hidden;">
+    End date should not be before start date.
+  </div>
 <br><br>
-
+  
     {% for vehicle in vehicles %}
     <div class="card mb-4" style="max-width: 840px; padding: 5px;">
         <div class="row no-gutters">

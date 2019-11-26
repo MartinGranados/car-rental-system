@@ -28,13 +28,13 @@ class Vehicle(models.Model):
 
     vehicle_type = models.CharField(max_length = 6, choices = VEHICLE_TYPE_CHOICES, default = car)
     vehicle_class = models.CharField(max_length=9, choices=VEHICLE_CLASS_CHOICES, default=standard)
-    vehicle_make = models.CharField(max_length = 12)
+    vehicle_make = models.CharField(max_length = 14)
     vehicle_model = models.CharField(max_length = 16)
     seats = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(12)])
     price_per_day = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(0.00), MaxValueValidator(500.00)])
     vehicle_status = models.CharField(max_length=11, choices=VEHICLE_STATUS_CHOICES, default=available)
-    # status_start_date = models.DateField()
-    # status_end_date = models.DateField()
+    status_start_date = models.DateField()
+    status_end_date = models.DateField()
     # reserved_by = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='vehicle_pics')
 
