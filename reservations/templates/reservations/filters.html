@@ -10,11 +10,11 @@
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="start_date">Start Date</label>
-            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date" id="startDate" onblur="compare();">
+            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date" id="startDate" onblur="compare();" required>
           </div>
           <div class="col-md-6 mb-3">
             <label for="end_date">End Date</label>
-            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date" id="endDate" onblur="compare();">
+            <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date" id="endDate" onblur="compare();" required>
           </div>
           <!-- end row -->
           
@@ -35,10 +35,10 @@
               <label for="vehicle_class">Vehicle Class</label>
               <select class="form-control" name="vehicle_class">
                 <option value="any">Show All</option>
-                <option value="economy">Economy</option>
-                <option value="standard">Standard</option>
-                <option value="sport">Sport</option>
-                <option value="luxury">Luxury</option>
+                <option value="Economy">Economy</option>
+                <option value="Standard">Standard</option>
+                <option value="Sport">Sport</option>
+                <option value="Luxury">Luxury</option>
               </select>
           </div>
           <div class="col-md-3 mb-3">
@@ -57,6 +57,7 @@
         <button class="btn btn-primary" type="submit" id="submit">Search vehicles</button>
 </form>
 <script>
+  
 function compare()
   {
       var now = new Date()

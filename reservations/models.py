@@ -7,7 +7,7 @@ class Vehicle(models.Model):
     car = 'car'
     truck = 'truck'
     van = 'van'
-    suv = 'SUV'
+    suv = 'suv'
 
     # Status choices
     available = 'Available'
@@ -20,11 +20,10 @@ class Vehicle(models.Model):
     standard = 'Standard'
     sport = 'Sport'
     luxury = 'Luxury'
-    all_classes = 'All'
 
     VEHICLE_STATUS_CHOICES = [(available,'Available'), (reserved, 'Reserved'), (rented, 'Rented'), (maintenance, 'Maintenance')]
     VEHICLE_TYPE_CHOICES = [(car, 'Car'), (truck, 'Truck'), (van, 'Van'), (suv, 'SUV')]
-    VEHICLE_CLASS_CHOICES = [(economy, 'Economy'), (standard, 'Standard'), (sport, 'Sport'), (luxury,'Luxury'), (all_classes, 'All')]
+    VEHICLE_CLASS_CHOICES = [(economy, 'Economy'), (standard, 'Standard'), (sport, 'Sport'), (luxury,'Luxury'),]
 
     vehicle_type = models.CharField(max_length = 6, choices = VEHICLE_TYPE_CHOICES, default = car)
     vehicle_class = models.CharField(max_length=9, choices=VEHICLE_CLASS_CHOICES, default=standard)
