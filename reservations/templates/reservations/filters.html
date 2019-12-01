@@ -5,7 +5,7 @@
 {% block content %}
 
 
-<form method="POST"> {% csrf_token %}
+<form method="POST" > {% csrf_token %}
         <!-- begin row -->
         <div class="form-row">
           <div class="col-md-6 mb-3">
@@ -115,13 +115,17 @@ function compare()
                     <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
                     <p class="card-text">{{ vehicle.seats }} seats</p>
                 </div>
-                <div class="card-body col-md-4">
+                <div class="card-body col-md-4" id="price" onload="total_price();">
+                
                         ${{ vehicle.price_per_day }}/day
                         
                 </div>
             <!-- </div> -->
         </div>
-        <button class="btn btn-primary btn-block">Reserve</button>
+        <form method="POST"> {% csrf_token %}
+          <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+          <button class="btn btn-primary btn-block" type="submit" id="submit-reserve">Reserve</button>
+        </form>
     </div>
     {% endfor %}
 
