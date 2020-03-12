@@ -38,4 +38,4 @@ class Vehicle(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='vehicle_pics')
 
     def __str__(self):
-        return str(self.vehicle_make).title() + ' ' + str(self.vehicle_model).title() # + ' Seat ' + self.vehicle_type.title()
+        return str(self.vehicle_make).title() + ' ' + str(self.vehicle_model).title() 

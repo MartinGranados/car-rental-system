@@ -10,17 +10,15 @@
         <div class="col-md-4">
             <img class="card-img" src="{{ vehicle.image.url }}">
         </div>
-        <!-- <div class="col-md-8"> -->
-            <div class="card-body col-md-4">
-                <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
-                <p class="card-text">{{ vehicle.seats }} seats</p>
-            </div>
-            <div class="card-body col-md-4" id="price" onload="total_price();">
-            
-                    ${{ vehicle.price_per_day }}/day
-                    
-            </div>
-        <!-- </div> -->
+        <div class="card-body col-md-4">
+            <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
+            <p class="card-text">{{ vehicle.seats }} seats</p>
+        </div>
+        <div class="card-body col-md-4" id="price" onload="total_price();">
+        
+                ${{ vehicle.price_per_day }}/day
+                
+        </div>
     </div>
     <form method="POST"> {% csrf_token %}
       <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
