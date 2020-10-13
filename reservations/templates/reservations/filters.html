@@ -96,9 +96,9 @@ function dateValidate()
         document.getElementById("dateError").style.display = "none";
         document.getElementById("submit").disabled = false;
       }
-  }</script>
+}
+</script>
 <br><br>
-  
     {% for vehicle in vehicles %}
     <div class="card mb-4" style="max-width: 840px; padding: 5px;">
         <div class="row no-gutters">
@@ -110,9 +110,10 @@ function dateValidate()
                     <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
                     <p class="card-text">{{ vehicle.seats }} seats</p>
                 </div>
-                <div class="card-body col-md-4" id="price" onload="total_price();">
+                <div class="card-body col-md-4" id="price">
                 
-                        ${{ vehicle.price_per_day }}/day
+                        ${{ vehicle.price_per_day }}/day,
+                        {% for length in rentals_length %} {{ length }} {% endfor %}
                         
                 </div>
             <!-- </div> -->

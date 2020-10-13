@@ -13,10 +13,11 @@ def filters(request):
         status_end = request.POST['status_end_date']
         status_start = dt.datetime.strptime(status_start, '%Y-%m-%d')
         status_end = dt.datetime.strptime(status_end, '%Y-%m-%d')
-        rental_length = int(str(status_end.date() - status_start.date()).split(' ')[0]) #{'rental_length': int(str(status_end.date() - status_start.date()).split(' ')[0])}
-        print(status_start.date(), dt.date.today(), status_end, '***', str(((dt.date.today()) - status_start.date())), '***')
+        rental_length = int(str(status_end.date() - status_start.date()).split(' ')[0])
 
+        # date input validation
         if rental_length > 14 or rental_length < 0 or (int(str((dt.date.today()) - status_start.date()).split(' ')[0])) > 0:
+            
             if rental_length > 14:
                 messages.error(request,'Please contact us to reserve a vehicle for longer than 14 days.', extra_tags='alert-danger')
                 return render(request, 'reservations/filters.html')
@@ -28,14 +29,17 @@ def filters(request):
             elif (int(str((dt.date.today()) - status_start.date()).split(' ')[0])) > 0:
                 messages.error(request,'Please choose dates in the present or future.', extra_tags='alert-danger')
                 return render(request, 'reservations/filters.html')
-
         
         if request.POST['vehicle_type'] == 'any':
             if request.POST['vehicle_class'] == 'any':
                 if request.POST['number_of_seats'] == 'any':
+
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available',
-                                                                            status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_start_date__lte=status_start.date(), 
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model').distinct()}
+                    rentals_length = rental_length
+                    print(filtered_vehicles, rental_length)
                 else:
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
                                                                             seats=request.POST['number_of_seats'],
@@ -82,7 +86,7 @@ def filters(request):
                                                                             status_end_date__gte=status_end.date())}
             
         
-        return render(request, 'reservations/filters.html', filtered_vehicles)
+        return render(request, 'reservations/filters.html', filtered_vehicles, rentals_length)
     else:
         # If form has not been filled out yet, show only the form
         return render(request, 'reservations/filters.html')
