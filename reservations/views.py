@@ -4,6 +4,15 @@ from .models import Vehicle
 from django.contrib import messages
 import datetime as dt
 
+def distinct(queryset, fieldname):
+    d = {}
+    for item in queryset:
+        field_value = getattr(item, fieldname)
+        if field_value not in d:
+            d[field_value] = item
+    return d.values()
+
+
 def filters(request):
     # If form is filled out and submitted, reload the page with the vehicles that
     # match the filters displayed
@@ -31,62 +40,87 @@ def filters(request):
                 return render(request, 'reservations/filters.html')
         
         if request.POST['vehicle_type'] == 'any':
+
             if request.POST['vehicle_class'] == 'any':
                 if request.POST['number_of_seats'] == 'any':
 
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available',
                                                                             status_start_date__lte=status_start.date(), 
                                                                             status_end_date__gte=status_end.date())
-                                                                            .order_by('vehicle_model').distinct()}
-                    rentals_length = rental_length
-                    print(filtered_vehicles, rental_length)
+                                                                            .order_by('vehicle_model')}
+                    print(filtered_vehicles)
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
                 else:
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
                                                                             seats=request.POST['number_of_seats'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+                                                                            
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
             else:
                 if request.POST['number_of_seats'] == 'any':
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
                                                                             vehicle_class=request.POST['vehicle_class'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
                 else:
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
                                                                             vehicle_class=request.POST['vehicle_class'], 
                                                                             seats=request.POST['number_of_seats'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)                
         else:
             if request.POST['vehicle_class'] == 'any':
                 if request.POST['number_of_seats'] == 'any':
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available',
                                                                             vehicle_type=request.POST['vehicle_type'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
                 else:
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available',
                                                                             vehicle_type=request.POST['vehicle_type'], 
                                                                             seats=request.POST['number_of_seats'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
             else:
                 if request.POST['number_of_seats'] == 'any':
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
                                                                             vehicle_class=request.POST['vehicle_class'],
                                                                             vehicle_type=request.POST['vehicle_type'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
                 else:
                     filtered_vehicles = {'vehicles': Vehicle.objects.filter(vehicle_status='Available', 
                                                                             vehicle_class=request.POST['vehicle_class'],
                                                                             vehicle_type=request.POST['vehicle_type'], 
                                                                             seats=request.POST['number_of_seats'],
                                                                             status_start_date__lte=status_start.date(),
-                                                                            status_end_date__gte=status_end.date())}
-            
-        
-        return render(request, 'reservations/filters.html', filtered_vehicles, rentals_length)
+                                                                            status_end_date__gte=status_end.date())
+                                                                            .order_by('vehicle_model')}
+                    filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
+                    print(filtered_vehicles)
+
+        print(rental_length)
+        return render(request, 'reservations/filters.html', filtered_vehicles, rental_length)
     else:
         # If form has not been filled out yet, show only the form
         return render(request, 'reservations/filters.html')

@@ -11,18 +11,23 @@
 <form method="POST" > {% csrf_token %}
         <!-- begin row -->
         <div class="form-row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="start_date">Start Date</label>
             <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date" id="startDate" onblur="dateValidate();" required>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
+            <label for="start_date">Start Time</label>
+            <input type="time" class="form-control" name="status_start_time" id="startTime" min="09:00" max="19:00" step="1800" onblur="dateValidate();" required>
+          </div>
+          <div class="col-md-4 mb-3">
             <label for="end_date">End Date</label>
             <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date" id="endDate" onblur="dateValidate();" required>
           </div>
-          <!-- end row -->
-          
-          <!-- begin row -->
         </div>
+        <!-- end row -->
+          
+          
+        <!-- begin row -->
         <div class="form-row">
           <div class="col-md-4 mb-3">
               <label for="vehicle_type">Vehicle Type</label>
