@@ -11,18 +11,23 @@
 <form method="POST" > {% csrf_token %}
         <!-- begin row -->
         <div class="form-row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="start_date">Start Date</label>
             <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date" id="startDate" onblur="dateValidate();" required>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-3">
+            <label for="start_date">Start Time</label>
+            <input type="time" class="form-control" name="status_start_time" id="startTime" min="09:00" max="19:00" step="1800" onblur="dateValidate();" required>
+          </div>
+          <div class="col-md-4 mb-3">
             <label for="end_date">End Date</label>
             <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date" id="endDate" onblur="dateValidate();" required>
           </div>
-          <!-- end row -->
-          
-          <!-- begin row -->
         </div>
+        <!-- end row -->
+          
+          
+        <!-- begin row -->
         <div class="form-row">
           <div class="col-md-4 mb-3">
               <label for="vehicle_type">Vehicle Type</label>
@@ -96,9 +101,9 @@ function dateValidate()
         document.getElementById("dateError").style.display = "none";
         document.getElementById("submit").disabled = false;
       }
-  }</script>
+}
+</script>
 <br><br>
-  
     {% for vehicle in vehicles %}
     <div class="card mb-4" style="max-width: 840px; padding: 5px;">
         <div class="row no-gutters">
@@ -110,9 +115,10 @@ function dateValidate()
                     <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
                     <p class="card-text">{{ vehicle.seats }} seats</p>
                 </div>
-                <div class="card-body col-md-4" id="price" onload="total_price();">
+                <div class="card-body col-md-4" id="price">
                 
-                        ${{ vehicle.price_per_day }}/day
+                        ${{ vehicle.price_per_day }}/day,
+                        {% for length in rentals_length %} {{ length }} {% endfor %}
                         
                 </div>
             <!-- </div> -->
