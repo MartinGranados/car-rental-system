@@ -25,7 +25,7 @@ SECRET_KEY = '^imyfuo7z!%$s=(jhzvzz#4o3y@p29aeqk3$+9tjmvwfet@+zq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['broncorentals.herokuapp.com', '0.0.0.0','192.168.1.9', '127.0.0.1']
+ALLOWED_HOSTS = ['broncorentals.herokuapp.com', '0.0.0.0','192.168.1.160', '127.0.0.1']
 
 
 # Application definition

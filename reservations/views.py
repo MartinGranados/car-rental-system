@@ -18,9 +18,12 @@ def filters(request):
     # match the filters displayed
 
     if request.method == 'POST':
+        print(request.POST['status_start_time'])
         status_start = request.POST['status_start_date']
+        status_start = status_start + ' ' + request.POST['status_start_time']
+        print('**********' + status_start + '**********')
         status_end = request.POST['status_end_date']
-        status_start = dt.datetime.strptime(status_start, '%Y-%m-%d')
+        status_start = dt.datetime.strptime(status_start, '%Y-%m-%d %H:%M')
         status_end = dt.datetime.strptime(status_end, '%Y-%m-%d')
         rental_length = int(str(status_end.date() - status_start.date()).split(' ')[0])
 

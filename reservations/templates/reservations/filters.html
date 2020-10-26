@@ -12,16 +12,81 @@
         <!-- begin row -->
         <div class="form-row">
           <div class="col-md-3 mb-3">
-            <label for="start_date">Start Date</label>
+            <label for="start_date">Pickup Date</label>
             <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_start_date" id="startDate" onblur="dateValidate();" required>
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="start_date">Start Time</label>
-            <input type="time" class="form-control" name="status_start_time" id="startTime" min="09:00" max="19:00" step="1800" onblur="dateValidate();" required>
+          <div class="col-md-2 mb-3">
+            <label for="start_date">Pickup Time</label>
+            <select class="form-control" name="status_start_time" id="startTime" onblur="dateValidate();" required>
+              <option value="06:00">6:00AM</option>
+              <option value="06:30">6:30AM</option>
+              <option value="07:00">7:00AM</option>
+              <option value="07:30">7:30AM</option>
+              <option value="08:00">8:00AM</option>
+              <option value="08:30">8:30AM</option>
+              <option value="09:00">9:00AM</option>
+              <option value="09:30">9:30AM</option>
+              <option value="10:00">10:00AM</option>
+              <option value="10:30">10:30AM</option>
+              <option value="11:00">11:00AM</option>
+              <option value="11:30">11:30AM</option>
+              <option value="12:00">12:00PM</option>
+              <option value="12:30">12:30PM</option>
+              <option value="13:00">1:00PM</option>
+              <option value="13:30">1:30PM</option>
+              <option value="14:00">2:00PM</option>
+              <option value="14:30">2:30PM</option>
+              <option value="15:00">3:00PM</option>
+              <option value="15:30">3:30PM</option>
+              <option value="16:00">4:00PM</option>
+              <option value="16:30">4:30PM</option>
+              <option value="17:00">5:00PM</option>
+              <option value="17:30">5:30PM</option>
+              <option value="18:00">6:00PM</option>
+              <option value="18:30">6:30PM</option>
+              <option value="19:00">7:00PM</option>
+              <option value="19:30">7:30PM</option>
+            </select>
           </div>
-          <div class="col-md-4 mb-3">
-            <label for="end_date">End Date</label>
+          <div class="col-md-2 mb-3">
+
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="end_date">Return Date</label>
             <input type="date" class="form-control" data-date-format="yyyy/mm/dd" name="status_end_date" id="endDate" onblur="dateValidate();" required>
+          </div>
+          <div class="col-md-2 mb-3">
+            <label for="start_date">Return Time</label>
+            <select class="form-control" name="status_end_time" id="startTime" onblur="dateValidate();" required>
+              <option value="06:00">6:00AM</option>
+              <option value="06:30">6:30AM</option>
+              <option value="07:00">7:00AM</option>
+              <option value="07:30">7:30AM</option>
+              <option value="08:00">8:00AM</option>
+              <option value="08:30">8:30AM</option>
+              <option value="09:00">9:00AM</option>
+              <option value="09:30">9:30AM</option>
+              <option value="10:00">10:00AM</option>
+              <option value="10:30">10:30AM</option>
+              <option value="11:00">11:00AM</option>
+              <option value="11:30">11:30AM</option>
+              <option value="12:00">12:00PM</option>
+              <option value="12:30">12:30PM</option>
+              <option value="13:00">1:00PM</option>
+              <option value="13:30">1:30PM</option>
+              <option value="14:00">2:00PM</option>
+              <option value="14:30">2:30PM</option>
+              <option value="15:00">3:00PM</option>
+              <option value="15:30">3:30PM</option>
+              <option value="16:00">4:00PM</option>
+              <option value="16:30">4:30PM</option>
+              <option value="17:00">5:00PM</option>
+              <option value="17:30">5:30PM</option>
+              <option value="18:00">6:00PM</option>
+              <option value="18:30">6:30PM</option>
+              <option value="19:00">7:00PM</option>
+              <option value="19:30">7:30PM</option>
+            </select>
           </div>
         </div>
         <!-- end row -->
