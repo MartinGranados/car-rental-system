@@ -17,11 +17,10 @@ def filters(request):
     # If form is filled out and submitted, reload the page with the vehicles that
     # match the filters displayed
 
-    if request.method == 'POST':
+    if request.method == 'POST' and 'search_submit' in request.POST:
         print(request.POST['status_start_time'])
         status_start = request.POST['status_start_date']
         status_start = status_start + ' ' + request.POST['status_start_time']
-        print('**********' + status_start + '**********')
         status_end = request.POST['status_end_date']
         status_start = dt.datetime.strptime(status_start, '%Y-%m-%d %H:%M')
         status_end = dt.datetime.strptime(status_end, '%Y-%m-%d')
@@ -122,13 +121,16 @@ def filters(request):
                     filtered_vehicles = {'vehicles': distinct(filtered_vehicles['vehicles'], 'vehicle_model')}
                     print(filtered_vehicles)
 
-        print(rental_length)
-        return render(request, 'reservations/filters.html', filtered_vehicles, rental_length)
+        
+        return render(request, 'reservations/filters.html', {'vehicles': filtered_vehicles['vehicles'], 'rental_length': rental_length})
+
+    elif request.method == 'POST' and 'submit_select' in request.POST:
+        # view one vehicle in detail
+        vehicle = {'vehicles': Vehicle.objects.get(id=request.POST['vehicle_id'])}
+        return render(request, 'reservations/filtered.html', {'vehicles': vehicle['vehicles'], 'rental_length': request.POST['rental_length']})
     else:
         # If form has not been filled out yet, show only the form
         return render(request, 'reservations/filters.html')
 
 # def confirm(request):
     
-
-

@@ -4,27 +4,27 @@
 <!-- anything between block content tags is what usually goes between body tags.-->
 {% block content %}
 
-{% for vehicle in vehicles %}
+
 <div class="card mb-4" style="max-width: 840px; padding: 5px;">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img class="card-img" src="{{ vehicle.image.url }}">
+            <img class="card-img" src="{{ vehicles.image.url }}">
         </div>
         <div class="card-body col-md-4">
-            <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
-            <p class="card-text">{{ vehicle.seats }} seats</p>
+            <h5 class="card-title" style="text-transform: capitalize;">{{ vehicles }}</h5>
+            <p class="card-text">{{ vehicles.seats }} seats</p>
         </div>
         <div class="card-body col-md-4" id="price" onload="total_price();">
         
-                ${{ vehicle.price_per_day }}/day
+                ${{ vehicles.price_per_day }}/day {{ rental_length }}
                 
         </div>
     </div>
     <form method="POST"> {% csrf_token %}
-      <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+      <input type="hidden" name="vehicle_id" value="{{ vehicles.id }}">
       <button class="btn btn-primary btn-block" type="submit" id="submit-reserve">Reserve</button>
     </form>
 </div>
-{% endfor %}
+
 
 {% endblock content %}

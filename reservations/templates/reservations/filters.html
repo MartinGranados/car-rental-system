@@ -127,7 +127,7 @@
               </select>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" id="submit">Search vehicles</button>
+        <button class="btn btn-primary" type="submit" id="submit" name="search_submit">Search vehicles</button>
 </form>
 <script>
   
@@ -182,15 +182,15 @@ function dateValidate()
                 </div>
                 <div class="card-body col-md-4" id="price">
                 
-                        ${{ vehicle.price_per_day }}/day,
-                        {% for length in rentals_length %} {{ length }} {% endfor %}
+                        ${{ vehicle.price_per_day }}/day, {{ rental_length }}
                         
                 </div>
             <!-- </div> -->
         </div>
         <form method="POST"> {% csrf_token %}
           <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
-          <button class="btn btn-primary btn-block" type="submit" id="submit-reserve">Reserve</button>
+          <input type="hidden" name="rental_length" value="{{ rental_length }}">
+          <button class="btn btn-primary btn-block" type="submit" id="submit-select" name="submit_select">Select...</button>
         </form>
     </div>
     {% endfor %}
