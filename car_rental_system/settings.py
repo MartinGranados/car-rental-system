@@ -25,7 +25,7 @@ SECRET_KEY = '^imyfuo7z!%$s=(jhzvzz#4o3y@p29aeqk3$+9tjmvwfet@+zq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['broncorentals.herokuapp.com', '0.0.0.0','192.168.1.160', '127.0.0.1']
+ALLOWED_HOSTS = ['broncorentals.herokuapp.com', '0.0.0.0','192.168.1.160', '127.0.0.1', '76.203.142.218', 'a6ecef2437ee.ngrok.io']
 
 
 # Application definition
@@ -118,11 +118,13 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/New_York'
 
+DATETIME_FORMAT="Y-m-d H:i"
+
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
