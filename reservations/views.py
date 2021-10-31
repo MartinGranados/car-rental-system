@@ -125,14 +125,32 @@ def filters(request):
 
         print(status_start)
         return render(request, 'reservations/filters.html', {'vehicles': filtered_vehicles['vehicles'], 'rental_length': rental_length, 'status_start': status_start, 'status_end': status_end})
+    else:
+    # If form has not been filled out yet, show only the form
+        return render(request, 'reservations/filters.html')
 
-    elif request.method == 'POST' and 'submit_select' in request.POST:
+    # elif request.method == 'POST' and 'submit_select' in request.POST:
+    #     # view one vehicle in detail
+    #     vehicle = {'vehicles': Vehicle.objects.get(id=request.POST['vehicle_id'])}
+    #     status_start = request.POST['status_start']
+    #     status_end = request.POST['status_end']
+    #     return render(
+    #         request, 'reservations/filtered.html',
+    #         {
+    #             'vehicles': vehicle['vehicles'],
+    #             'rental_length': request.POST['rental_length'],
+    #             'status_start': status_start,
+    #             'status_end': status_end
+    #         }
+    #     )
+def select(request):
+    if request.method == 'POST' and 'submit_select' in request.POST:
         # view one vehicle in detail
         vehicle = {'vehicles': Vehicle.objects.get(id=request.POST['vehicle_id'])}
         status_start = request.POST['status_start']
         status_end = request.POST['status_end']
         return render(
-            request, 'reservations/filtered.html',
+            request, 'reservations/select.html',
             {
                 'vehicles': vehicle['vehicles'],
                 'rental_length': request.POST['rental_length'],
@@ -141,18 +159,17 @@ def filters(request):
             }
         )
 
-    elif request.method == 'POST' and 'submit_reserve' in request.POST:
+def confirm(request):
+    if request.method == 'POST' and 'submit_reserve' in request.POST:
         # add reservation to database using start date, end date and vehicle ID
         vehicle = Vehicle.objects.get(id=request.POST['vehicle_id'])
         status_start = request.POST['status_start']
         status_end = request.POST['status_end']
         reservation = Reservations(vehicle = vehicle, status_start = status_start, status_end = status_end)
         reservation.save()
-        return render(request, 'reservations/filters.html')
+        return render(request, 'reservations/confirm.html')
 
 
-    else:
-        # If form has not been filled out yet, show only the form
-        return render(request, 'reservations/filters.html')
+
 
     
