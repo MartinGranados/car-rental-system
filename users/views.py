@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
+from reservations.models import Reservations, Vehicle
+import datetime
 
 
 def register(request):
@@ -20,4 +22,13 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    # reservations = Reservations.objects.filter(user=request.user)
+    future_reservations = Reservations.objects.filter(
+        status_start__gte=datetime.date.today()
+    )
+    past_reservations = Reservations.objects.filter(
+        status_end__lte=datetime.date.today()
+    )
+    reservations = {"future_reservations": future_reservations, "past_reservations": past_reservations}
+
+    return render(request, 'users/profile.html', reservations)

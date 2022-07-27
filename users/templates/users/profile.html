@@ -4,13 +4,53 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="content-section">
-        <div class="media">
-          <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-          <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
-          </div>
-        </div>
-        <!-- FORM HERE -->
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
+  <!-- FORM HERE -->
+</div>
+<div class="content-section">
+  <h3>My Upcoming Trips</h3>
+  <div>
+    {%for reservation in future_reservations%}
+    <div class="card mb-4" style="max-width: 840px; padding: 5px;">
+      <div class="row no-gutters">
+            <div class="col-md-4">
+                <img class="card-img" src="{{ reservation.vehicle.image.url }}">
+            </div>
+            <div class="card-body col-md-4">
+                <h5 class="card-title" style="text-transform: capitalize;">{{ reservation.vehicle }}</h5>
+                <p class="card-text">{{ reservation.vehicle.seats }} seats</p>
+            </div>
+            <div class="card-body col-md-4" id="price">
+                    ${{ reservation.vehicle.price_per_day }}/day, From {{ reservation.status_start }} to {{ reservation.status_end }}
+            </div>
       </div>
+    </div> 
+    {%endfor%}
+  </div>
+  <h3>My Prior Trips</h3>
+  <div>
+    {%for xreservation in past_reservations%}
+    <div class="card mb-4" style="max-width: 840px; padding: 5px;">
+      <div class="row no-gutters">
+            <div class="col-md-4">
+                <img class="card-img" src="{{ xreservation.vehicle.image.url }}">
+            </div>
+            <div class="card-body col-md-4">
+                <h5 class="card-title" style="text-transform: capitalize;">{{ xreservation.vehicle }}</h5>
+                <p class="card-text">{{ xreservation.vehicle.seats }} seats</p>
+            </div>
+            <div class="card-body col-md-4" id="price">
+                    ${{ xreservation.vehicle.price_per_day }}/day, From {{ xreservation.status_start }} to {{ xreservation.status_end }}
+            </div>
+      </div>
+    </div> 
+    {%endfor%}
+  </div>
+</div>
 {% endblock content %}

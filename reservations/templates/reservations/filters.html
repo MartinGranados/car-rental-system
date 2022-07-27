@@ -8,10 +8,11 @@
     Please contact us to reserve a vehicle for longer than 14 days.
 </div>
 
+<div id="date-form">
 <form method="POST" > {% csrf_token %}
         <!-- begin row -->
         <div class="form-row">
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2 mb-3">
             <label for="start_date">Pickup Date</label>
             <input type="date" class="form-control" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" name="status_start_date" id="startDate" onblur="dateValidate();" required>
           </div>
@@ -48,10 +49,10 @@
               <option value="19:30">7:30PM</option>
             </select>
           </div>
-          <div class="col-md-2 mb-3">
+          <div class="col-md-1 mb-1">
 
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2 mb-3">
             <label for="end_date">Return Date</label>
             <input type="date" class="form-control" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" name="status_end_date" id="endDate" onblur="dateValidate();" required>
           </div>
@@ -94,7 +95,7 @@
           
         <!-- begin row -->
         <div class="form-row">
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
               <label for="vehicle_type">Vehicle Type</label>
               <select class="form-control" name="vehicle_type">
                 <option value="any">Show All</option>
@@ -104,7 +105,7 @@
                 <option value="suv">SUV</option>
               </select>
           </div>
-          <div class="col-md-5 mb-3">
+          <div class="col-md-3 mb-3">
               <label for="vehicle_class">Vehicle Class</label>
               <select class="form-control" name="vehicle_class">
                 <option value="any">Show All</option>
@@ -114,7 +115,7 @@
                 <option value="Luxury">Luxury</option>
               </select>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2 mb-2">
             <label for="number_of_seats">Seats</label>
             <select class="form-control" name="number_of_seats">
                 <option value="any">Show All</option>
@@ -129,6 +130,7 @@
         </div>
         <button class="btn btn-primary" type="submit" id="submit" name="search_submit">Search vehicles</button>
 </form>
+</div>
 <script>
   
 function dateValidate()
