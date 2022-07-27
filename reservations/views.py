@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Vehicle, Reservations
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -153,3 +154,4 @@ def confirm(request):
                 "status_end": status_end,
             },
         )
+
