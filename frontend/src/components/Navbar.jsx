@@ -14,7 +14,7 @@ export default function Navbar () {
         sx={{
             width: 'auto',
             height: (window.innerHeight / 10),
-            backgroundColor: 'primary.main',
+            backgroundColor: '#255dcc',
         }}>
             <Grid container 
             sx={{
@@ -48,6 +48,7 @@ export default function Navbar () {
                     <ButtonGroup
                     sx={{
                         marginRight: 10,
+                        justifyContent: 'space-between'
                     }}>
                         <Button 
                         sx={{

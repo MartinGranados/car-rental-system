@@ -23,7 +23,7 @@ export default function Homepage() {
     sx={{
       zIndex: 1,
       position: 'absolute',
-      marginTop: 40
+      marginTop: 30
     }}>
     <VehicleSearch />
     </Grid>
