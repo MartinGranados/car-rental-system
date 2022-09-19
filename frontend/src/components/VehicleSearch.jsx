@@ -1,5 +1,6 @@
 //Imports
 import React from "react";
+import {Link} from 'react-router-dom'
 
 // Material.UI Imports
 import Box from '@mui/material/Box'
@@ -173,13 +174,16 @@ export default function VehicleSearch() {
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Button
-                        sx={{
-                            backgroundColor: '#255dcc',
-                            color: 'white',
-                            height: 55,
-                            borderRadius: 5,
-                        }}>Search Vehicles</Button>
+                        <Link to='/results'>
+                            <Button
+                            sx={{
+                                backgroundColor: '#255dcc',
+                                color: 'white',
+                                height: 55,
+                                borderRadius: 5,
+                            }}>Search Vehicles
+                            </Button>
+                        </Link>
                     </Grid>
                 </Grid>
             </Box>

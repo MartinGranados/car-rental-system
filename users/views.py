@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
-from reservations.models import Reservations, Vehicle
+from car_rental_system.models import Reservations, Vehicle
 import datetime
 
 
