@@ -22,6 +22,7 @@ import {DesktopDatePicker} from '@mui/x-date-pickers/DesktopDatePicker'
 
 
 export default function VehicleSearch() {
+    
     const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'))
     const [vehicleType, setVehicleType] = React.useState('Show All')
     const [vehicleClass, setVehicleClass] = React.useState('Show All')

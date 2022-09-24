@@ -12,6 +12,9 @@ class VehicleDetail(generics.RetrieveAPIView):
     serializer_class = VehicleSerializer
     pass
 
+
 class ReservationDetail(generics.RetrieveAPIView):
     queryset = Reservations.objects.all()
     serializer_class = ReservationSerializer
+
+

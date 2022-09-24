@@ -9,7 +9,7 @@ from users import views as user_views
 #URLS
 urlpatterns = [
     path('', include('car_rental_system.urls', namespace='car_rental_system')),
-    # path('results', index),
+    path('api/', include('api.urls', namespace='api')),
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),

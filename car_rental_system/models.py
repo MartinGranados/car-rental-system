@@ -15,7 +15,7 @@ class Vehicle(models.Model):
     vehicle_model = models.CharField(max_length=16)
     seats = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(12)])
     price_per_day = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(0.00), MaxValueValidator(500.00)])
-    image = models.ImageField(default='default.jpg', upload_to='vehicle_pics')
+    image = models.ImageField(default='default.jpg', upload_to='media/vehicle_pics')
 
     def __str__(self):
         return str(self.vehicle_make) + ' ' + str(self.vehicle_model)

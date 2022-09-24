@@ -104,19 +104,14 @@ USE_L10N = False
 USE_TZ = False
 
 #STATIC FILES
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static')
 ]
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #LOGIN
 LOGIN_REDIRECT_URL = 'main-home'
@@ -139,3 +134,5 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
 ]
+
+
