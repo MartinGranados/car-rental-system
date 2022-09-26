@@ -1,5 +1,6 @@
 // Imports
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 // Material.UI Imports
 import Box from '@mui/material/Box';
@@ -36,12 +37,14 @@ export default function Navbar () {
                             fontSize: 18
                         }}>Bronco Rental System
                         </Button>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                        }}>Home
-                        </Button>
+                        <Link to='/'>
+                            <Button
+                            sx={{
+                                color: 'white',
+                                backgroundColor: null,
+                            }}>Home
+                            </Button>
+                        </Link>
                     </ButtonGroup>
                 </Grid>
                 <Grid item>
