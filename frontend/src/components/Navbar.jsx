@@ -1,10 +1,12 @@
 // Imports
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Login from './Login'
 
 // Material.UI Imports
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import Appbar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,10 +19,16 @@ export default function Navbar () {
     const barHeight = window.innerHeight / 10
 
        return (
+        <Grid container 
+            sx={{
+                alignItems: 'center',
+            }}>
+        <Grid item>
         <Box
         sx={{
             flexgrow: 1,
             boxShadow: 1,
+            width: '100vw',
         }}>
             <AppBar 
             position='static'
@@ -55,72 +63,12 @@ export default function Navbar () {
                             Bronco Rental System
                         </Link>
                     </Typography>
-                    <Button
-                    sx={{
-                        color: 'white',
-                        backgroundColor: null,
-                    }}>
-                        Login
-                    </Button>
-                    <Button
-                    sx={{
-                        color: 'white',
-                        backgroundColor: null,
-                    }}>
-                        Sign Up
-                    </Button>
+                    <Login />
                 </Toolbar>
             </AppBar>
-            {/* <Grid container 
-            sx={{
-                alignItems: 'center',
-                padding: 1,
-                justifyContent: 'space-between'
-            }}>
-                <Grid item>
-                    <ButtonGroup 
-                    sx={{
-                        justifyContent: 'space-between',
-                        marginLeft: 10,
-                    }}>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                            fontWeight: 'bold',
-                            fontSize: 18
-                        }}>Bronco Rental System
-                        </Button>
-                        <Link to='/'>
-                            <Button
-                            sx={{
-                                color: 'white',
-                                backgroundColor: null,
-                            }}>Home
-                            </Button>
-                        </Link>
-                    </ButtonGroup>
-                </Grid>
-                <Grid item>
-                    <ButtonGroup
-                    sx={{
-                        marginRight: 10,
-                        justifyContent: 'space-between'
-                    }}>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                        }}>Sign In</Button>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                        }}>Register</Button>
-                    </ButtonGroup>
-                </Grid>
-            </Grid> */}
         </Box>
+        </Grid>
+        </Grid>
        )
 }
 

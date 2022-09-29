@@ -51,7 +51,6 @@ export default function VehicleSearch() {
                 backgroundColor: 'white',
                 height: 270,
                 width: '80vw',
-                zIndex: 1,
                 borderRadius: 5,
                 boxShadow: 10,
                 borderBottom: 5,
@@ -181,7 +180,7 @@ export default function VehicleSearch() {
                                 backgroundColor: '#255dcc',
                                 color: 'white',
                                 height: 55,
-                                borderRadius: 5,
+                                borderRadius: 4,
                             }}>Search Vehicles
                             </Button>
                         </Link>
