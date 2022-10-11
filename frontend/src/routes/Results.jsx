@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from 'react-query';
 import Navbar from '../components/Navbar'
 import VehicleDetail from '../components/VehicleDetail'
+import { useLocation } from 'react-router-dom'
 
 //Material UI Imports
 import Box from '@mui/material/Box';
@@ -9,14 +10,18 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid'
 
 
-async function fetchVehicles() {
-    const res = await fetch('http://127.0.0.1:8000/api/')
+
+
+async function fetchVehicles(filters) {
+    const res = await fetch(`http://127.0.0.1:8000/api/${filters}`)
     return res.json()
   }
 
 export default function Results() {
+    const location = useLocation()
+    const filters = location.state
 
-    const { data, status} = useQuery('vehicles', fetchVehicles)
+    const { data, status} = useQuery(['vehicles'], () => fetchVehicles(filters))
 
     if (status === 'loading') {
         return <p>Loading...</p>
@@ -25,7 +30,7 @@ export default function Results() {
     if (status === 'error') {
         return <p>Error!</p>
     }
-    console.log(data)
+    
     const results = data.map((vehicle) => 
     <VehicleDetail
         key={vehicle.id}

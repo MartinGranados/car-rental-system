@@ -16,8 +16,6 @@ import CarRentalIcon from '@mui/icons-material/CarRental';
 
 
 export default function Navbar () {
-    const barHeight = window.innerHeight / 10
-
        return (
         <Grid container 
             sx={{
@@ -35,8 +33,6 @@ export default function Navbar () {
             elevation={24}
             square={false}
             sx={{
-            width: 'auto',
-            height: barHeight,
             backgroundColor: '#255dcc',
             borderBottomLeftRadius: 5,
             borderBottomRightRadius: 5,

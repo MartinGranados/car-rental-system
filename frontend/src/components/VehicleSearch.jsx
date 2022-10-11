@@ -23,25 +23,64 @@ import {DesktopDatePicker} from '@mui/x-date-pickers/DesktopDatePicker'
 
 export default function VehicleSearch() {
     
-    const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'))
+
+    const date = new Date();
+    const currentDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+    
+    const [pickUpDate, setPickUpDate] = React.useState(currentDate)
     const [vehicleType, setVehicleType] = React.useState('Show All')
     const [vehicleClass, setVehicleClass] = React.useState('Show All')
     const [seats, setSeats] = React.useState('Show All')
 
-    const handleChange = (newValue) => {
-        setValue(newValue)
+    const [filters, setFilters] = React.useState({pickUpDate:pickUpDate, vehicleType:vehicleType, vehicleClass:vehicleClass, seats:seats})
+
+    const changePickUpDate = (newValue) => {
+        setPickUpDate(newValue)
+        setFilters({
+            pickUpDate: newValue,
+            vehicleType: vehicleType,
+            vehicleClass: vehicleClass,
+            seats: seats,
+        })
     }
 
     const changeVehicleType = (event) => {
         setVehicleType(event.target.value)
+        setFilters({
+            pickUpDate: pickUpDate,
+            vehicleType: (event.target.value),
+            vehicleClass: vehicleClass,
+            seats: seats,
+        })
     }
 
     const changeVehicleClass = (event) => {
         setVehicleClass(event.target.value)
+        setFilters({
+            pickUpDate: pickUpDate,
+            vehicleType: vehicleType,
+            vehicleClass: (event.target.value),
+            seats: seats,
+        })
     }
 
     const changeSeats = (event) => {
         setSeats(event.target.value)
+        setFilters({
+            pickUpDate: pickUpDate,
+            vehicleType: vehicleType,
+            vehicleClass: vehicleClass,
+            seats: (event.target.value)
+        })
+    }
+    
+    const handleSubmit = (event) => {
+        setFilters({
+            pickUpDate: pickUpDate,
+            vehicleType: vehicleType,
+            vehicleClass: vehicleClass,
+            seats: seats,
+        })
     }
 
     return (
@@ -69,16 +108,16 @@ export default function VehicleSearch() {
                         <DesktopDatePicker 
                             label='Pick-up Date'
                             inputFormat='MM/dd/yyyy'
-                            value={value}
-                            onChange={handleChange}
+                            value={pickUpDate}
+                            onChange={changePickUpDate}
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </Grid>
                     <Grid item>
                         <TimePicker
                             label='Time'
-                            value={value}
-                            onChange={handleChange}
+                            value={pickUpDate}
+                            onChange={changePickUpDate}
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </Grid>
@@ -92,16 +131,16 @@ export default function VehicleSearch() {
                         <DesktopDatePicker 
                             label='Return Date'
                             inputFormat='MM/dd/yyyy'
-                            value={value}
-                            onChange={handleChange}
+                            value={pickUpDate}
+                            onChange={changePickUpDate}
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </Grid>
                     <Grid item>
                         <TimePicker
                             label='Time'
-                            value={value}
-                            onChange={handleChange}
+                            value={pickUpDate}
+                            onChange={changePickUpDate}
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </Grid>
@@ -174,8 +213,9 @@ export default function VehicleSearch() {
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Link to='/results'>
+                        <Link to='/results' state={{filters}}>
                             <Button
+                            onClick={handleSubmit}
                             sx={{
                                 backgroundColor: '#255dcc',
                                 color: 'white',
