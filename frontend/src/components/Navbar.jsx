@@ -1,69 +1,70 @@
 // Imports
 import React from 'react';
+import {Link} from 'react-router-dom';
+import Login from './Login'
 
 // Material.UI Imports
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid'
-import ButtonGroup from '@mui/material/ButtonGroup';
+import Paper from '@mui/material/Paper'
+import Appbar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import AppBar from '@mui/material/AppBar';
+import CarRentalIcon from '@mui/icons-material/CarRental';
 
 
 export default function Navbar () {
        return (
-        <Box
-        sx={{
-            width: 'auto',
-            height: (window.innerHeight / 10),
-            backgroundColor: '#255dcc',
-        }}>
-            <Grid container 
+        <Grid container 
             sx={{
                 alignItems: 'center',
-                padding: 1,
-                justifyContent: 'space-between'
             }}>
-                <Grid item>
-                    <ButtonGroup 
+        <Grid item>
+        <Box
+        sx={{
+            flexgrow: 1,
+            boxShadow: 1,
+            width: '100vw',
+        }}>
+            <AppBar 
+            position='static'
+            elevation={24}
+            square={false}
+            sx={{
+            backgroundColor: '#255dcc',
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+            }}>
+                <Toolbar>
+                    <CarRentalIcon 
                     sx={{
-                        justifyContent: 'space-between',
-                        marginLeft: 10,
-                    }}>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                            fontWeight: 'bold',
-                            fontSize: 18
-                        }}>Bronco Rental System
-                        </Button>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                        }}>Home
-                        </Button>
-                    </ButtonGroup>
-                </Grid>
-                <Grid item>
-                    <ButtonGroup
+                        fontSize: 50,
+                    }}/>
+                    <Typography
+                    className='logo-title'
+                    variant='h1'
+                    component='div'
                     sx={{
-                        marginRight: 10,
-                        justifyContent: 'space-between'
+                        flexGrow: 1,
+                        fontSize: 50,
                     }}>
-                        <Button 
-                        sx={{
+                        <Link to='/'
+                        style={{
+                            textDecoration: 'none',
                             color: 'white',
                             backgroundColor: null,
-                        }}>Sign In</Button>
-                        <Button 
-                        sx={{
-                            color: 'white',
-                            backgroundColor: null,
-                        }}>Register</Button>
-                    </ButtonGroup>
-                </Grid>
-            </Grid>
+                        }}>
+                            Bronco Rental System
+                        </Link>
+                    </Typography>
+                    <Login />
+                </Toolbar>
+            </AppBar>
         </Box>
+        </Grid>
+        </Grid>
        )
 }
 
