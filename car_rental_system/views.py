@@ -18,29 +18,29 @@ def distinct(queryset):
     return d.values()
 
 
-def date_validation(request, status_start, status_end):
-    rental_length = status_end - status_start
-    rental_length_days = int(rental_length.days)
-    today = dt.date.today()
+# def date_validation(request, status_start, status_end):
+#     rental_length = status_end - status_start
+#     rental_length_days = int(rental_length.days)
+#     today = dt.date.today()
 
-    # Ensure end date is after start date
-    if rental_length_days < 0:
-        raise Exception(
-            messages.error(
-                request,
-                "End date should not be before start date.",
-                extra_tags="alert-danger",
-            )
-        )
-    # Ensure days after and including today are chosen
-    elif int((today - status_start.date()).days) > 0:
-        raise Exception(
-            messages.error(
-                request,
-                "Please choose dates in the present or future.",
-                extra_tags="alert-danger",
-            )
-        )
+#     # Ensure end date is after start date
+#     if rental_length_days < 0:
+#         raise Exception(
+#             messages.error(
+#                 request,
+#                 "End date should not be before start date.",
+#                 extra_tags="alert-danger",
+#             )
+#         )
+#     # Ensure days after and including today are chosen
+#     elif int((today - status_start.date()).days) > 0:
+#         raise Exception(
+#             messages.error(
+#                 request,
+#                 "Please choose dates in the present or future.",
+#                 extra_tags="alert-danger",
+#             )
+#         )
 
 
 def filters(request):

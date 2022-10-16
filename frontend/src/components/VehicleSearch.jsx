@@ -1,6 +1,6 @@
 //Imports
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // Material.UI Imports
 import Box from '@mui/material/Box'
@@ -15,15 +15,14 @@ import Select from '@mui/material/Select'
 // Icon Imports
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 // Date & Time Imports
-import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns'
-import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider'
-import {TimePicker} from '@mui/x-date-pickers/TimePicker'
-import {DesktopDatePicker} from '@mui/x-date-pickers/DesktopDatePicker'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 
 
 export default function VehicleSearch() {
     
-
     const date = new Date();
     const currentDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
     
@@ -33,6 +32,7 @@ export default function VehicleSearch() {
     const [seats, setSeats] = React.useState('Show All')
 
     const [filters, setFilters] = React.useState({pickUpDate:pickUpDate, vehicleType:vehicleType, vehicleClass:vehicleClass, seats:seats})
+    
 
     const changePickUpDate = (newValue) => {
         setPickUpDate(newValue)
@@ -162,10 +162,10 @@ export default function VehicleSearch() {
                                     onChange={changeVehicleType}
                                 >
                                     <MenuItem value='Show All'>Show All</MenuItem>
-                                    <MenuItem value='Car'>Car</MenuItem>
-                                    <MenuItem value='Truck'>Truck</MenuItem>
-                                    <MenuItem value='Van'>Van</MenuItem>
-                                    <MenuItem value='SUV'>SUV</MenuItem>
+                                    <MenuItem value='car'>Car</MenuItem>
+                                    <MenuItem value='truck'>Truck</MenuItem>
+                                    <MenuItem value='van'>Van</MenuItem>
+                                    <MenuItem value='suv'>SUV</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -213,7 +213,7 @@ export default function VehicleSearch() {
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Link to='/results' state={{filters}}>
+                        <Link to='/results' state={filters} className='search-button'>
                             <Button
                             onClick={handleSubmit}
                             sx={{

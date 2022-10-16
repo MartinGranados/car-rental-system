@@ -27,8 +27,7 @@ INSTALLED_APPS = [
     'car_rental_system',
     'api',
     'rest_framework',
-    'corsheaders'
-    
+    'corsheaders', 
 ]
 
 MIDDLEWARE = [
@@ -128,7 +127,7 @@ EMAIL_HOST_PASSWORD = 'CarRentalPassword'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
 }
 
 CORS_ALLOWED_ORIGINS = [

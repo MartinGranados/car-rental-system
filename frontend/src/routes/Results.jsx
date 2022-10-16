@@ -12,16 +12,20 @@ import Grid from '@mui/material/Grid'
 
 
 
-async function fetchVehicles(filters) {
-    const res = await fetch(`http://127.0.0.1:8000/api/${filters}`)
+async function fetchVehicles(vehicleType, vehicleClass, seats) {
+    const res = await fetch(`http://127.0.0.1:8000/api?vehicleType=${vehicleType}&${vehicleClass}&${seats}`)
     return res.json()
   }
 
 export default function Results() {
+
     const location = useLocation()
     const filters = location.state
+    const vehicleType = filters.vehicleType
+    const vehicleClass = filters.vehicleClass
+    const seats = filters.seats
 
-    const { data, status} = useQuery(['vehicles'], () => fetchVehicles(filters))
+    const { data, status} = useQuery(['vehicles'], () => fetchVehicles(vehicleType, vehicleClass, seats))
 
     if (status === 'loading') {
         return <p>Loading...</p>
