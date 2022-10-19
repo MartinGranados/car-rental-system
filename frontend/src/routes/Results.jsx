@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid'
 
 
 async function fetchVehicles(vehicleType, vehicleClass, seats) {
-    const res = await fetch(`http://127.0.0.1:8000/api?vehicleType=${vehicleType}&${vehicleClass}&${seats}`)
+    const res = await fetch(`http://127.0.0.1:8000/api?vehicleType=${vehicleType}&vehicleClass=${vehicleClass}&seats=${seats}`)
     return res.json()
   }
 

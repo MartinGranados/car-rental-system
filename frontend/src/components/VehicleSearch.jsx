@@ -27,9 +27,9 @@ export default function VehicleSearch() {
     const currentDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
     
     const [pickUpDate, setPickUpDate] = React.useState(currentDate)
-    const [vehicleType, setVehicleType] = React.useState('Show All')
-    const [vehicleClass, setVehicleClass] = React.useState('Show All')
-    const [seats, setSeats] = React.useState('Show All')
+    const [vehicleType, setVehicleType] = React.useState('showAll')
+    const [vehicleClass, setVehicleClass] = React.useState('showAll')
+    const [seats, setSeats] = React.useState('showAll')
 
     const [filters, setFilters] = React.useState({pickUpDate:pickUpDate, vehicleType:vehicleType, vehicleClass:vehicleClass, seats:seats})
     
@@ -81,6 +81,7 @@ export default function VehicleSearch() {
             vehicleClass: vehicleClass,
             seats: seats,
         })
+        console.log(filters)
     }
 
     return (
@@ -161,7 +162,7 @@ export default function VehicleSearch() {
                                     label='Vehicle Type'
                                     onChange={changeVehicleType}
                                 >
-                                    <MenuItem value='Show All'>Show All</MenuItem>
+                                    <MenuItem value='showAll'>Show All</MenuItem>
                                     <MenuItem value='car'>Car</MenuItem>
                                     <MenuItem value='truck'>Truck</MenuItem>
                                     <MenuItem value='van'>Van</MenuItem>
@@ -180,7 +181,7 @@ export default function VehicleSearch() {
                                     label='Vehicle Class'
                                     onChange={changeVehicleClass}
                                 >
-                                    <MenuItem value='Show All'>Show All</MenuItem>
+                                    <MenuItem value='showAll'>Show All</MenuItem>
                                     <MenuItem value='Economy'>Economy</MenuItem>
                                     <MenuItem value='Standard'>Standard</MenuItem>
                                     <MenuItem value='Sport'>Sport</MenuItem>
@@ -201,7 +202,7 @@ export default function VehicleSearch() {
                                     label='seats'
                                     onChange={changeSeats}
                                 >
-                                    <MenuItem value='Show All'>Show All</MenuItem>
+                                    <MenuItem value='showAll'>Show All</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
                                     <MenuItem value={4}>4</MenuItem>
                                     <MenuItem value={5}>5</MenuItem>

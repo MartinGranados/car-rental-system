@@ -2,6 +2,14 @@ from rest_framework import generics
 from car_rental_system.models import Vehicle, Reservations
 from .serializers import ReservationSerializer, VehicleSerializer
 
+# when queryset has duplicate results, return only one of each
+def distinct(queryset):
+    d = {}
+    for item in queryset:
+        field_value = getattr(item, "vehicle_model")
+        if field_value not in d:
+            d[field_value] = item
+    return d.values()
 
 
 class VehicleList(generics.ListAPIView):
@@ -10,14 +18,14 @@ class VehicleList(generics.ListAPIView):
     
     def get_queryset(self):
         queryset = Vehicle.objects.all()
+        
         vehicle_type = self.request.query_params['vehicleType']
-        # vehicle_class = self.request.query_params['vehicleClass']
-        # seats = self.request.query_params['seats']
+        vehicle_class = self.request.query_params['vehicleClass']
+        seats = self.request.query_params['seats']
 
-        if vehicle_type is not None:
-            queryset = queryset.filter(vehicle_type=vehicle_type)
+        queryset = queryset.filter(vehicle_type=vehicle_type, vehicle_class=vehicle_class, seats=seats)
     
-        return queryset
+        return distinct(queryset)
 
 
 class VehicleDetail(generics.RetrieveAPIView):

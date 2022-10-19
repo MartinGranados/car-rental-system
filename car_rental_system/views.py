@@ -9,13 +9,13 @@ def index (request):
     return render(request , 'index.html')
     
 # when queryset has duplicate results, return only one of each
-def distinct(queryset):
-    d = {}
-    for item in queryset:
-        field_value = getattr(item, "vehicle_model")
-        if field_value not in d:
-            d[field_value] = item
-    return d.values()
+# def distinct(queryset):
+#     d = {}
+#     for item in queryset:
+#         field_value = getattr(item, "vehicle_model")
+#         if field_value not in d:
+#             d[field_value] = item
+#     return d.values()
 
 
 # def date_validation(request, status_start, status_end):
