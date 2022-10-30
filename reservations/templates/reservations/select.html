@@ -3,21 +3,21 @@
 {% block title %}My Page Title{% endblock title %}
 <!-- anything between block content tags is what usually goes between body tags.-->
 {% block content %}
-<!-- this is a test comment ****** -->
-<div class="card mb-4" style="max-width: 840px; padding: 5px;">
+<div class="card mb-4" id="vehicle-card-select">
     <div class="row no-gutters">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <img class="card-img" src="{{ vehicles.image.url }}">
         </div>
-        <div class="card-body col-md-4">
+        <div class="card-body col-md-3">
             <h5 class="card-title" style="text-transform: capitalize;">{{ vehicles }}</h5>
             <p class="card-text">{{ vehicles.seats }} seats</p>
         </div>
-        <div class="card-body col-md-4" id="price">
+        <div class="card-body col-md-3" id="price">
         
                 ${{ vehicles.price_per_day }}/day 
                 <p id='totaltotal'>$<script>document.write({{ rental_length }} * {{ vehicles.price_per_day }});</script> total</p>
                 {{ status_start }}
+                {{ status_end }}
                 
         </div>
     </div>
