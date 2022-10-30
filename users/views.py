@@ -22,11 +22,11 @@ def register(request):
 
 @login_required
 def profile(request):
-    # reservations = Reservations.objects.filter(user=request.user)
-    future_reservations = Reservations.objects.filter(
+    reservations = Reservations.objects.filter(user=request.user)
+    future_reservations = reservations.filter(
         status_start__gte=datetime.date.today()
     )
-    past_reservations = Reservations.objects.filter(
+    past_reservations = reservations.filter(
         status_end__lte=datetime.date.today()
     )
     reservations = {"future_reservations": future_reservations, "past_reservations": past_reservations}
