@@ -14,9 +14,9 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 jsonschema==3.0.1
 jupyter-core==4.4.0
-kiwisolver==1.0.1
+kiwisolver
 nbformat==4.4.0
-Pillow==6.2.0
+Pillow
 pipenv==2018.11.26
 plotly==3.10.0
 pyparsing==2.3.1
