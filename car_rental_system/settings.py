@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     '192.168.1.160',
     '127.0.0.1',
     '76.203.142.218',
-    'car-rental-system-dev.us-east-1.elasticbeanstalk.com'
+    'crs-env.eba-maajhpt4.us-west-1.elasticbeanstalk.com',
+    'crs-env.eba-eihfhrp2.us-east-1.elasticbeanstalk.com'
 ]
 
 

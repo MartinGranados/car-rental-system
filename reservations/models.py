@@ -5,8 +5,18 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Vehicle(models.Model):
 
-    VEHICLE_STATUS_CHOICES = [('available', 'Available'), ('reserved', 'Reserved'), ('rented', 'Rented'), ('maintenance', 'Maintenance')]
-    VEHICLE_TYPE_CHOICES = [('car', 'Car'), ('truck', 'Truck'), ('van', 'Van'), ('suv', 'SUV')]
+    VEHICLE_STATUS_CHOICES = [
+        ('available', 'Available'),
+        ('reserved', 'Reserved'),
+        ('rented', 'Rented'),
+        ('maintenance', 'Maintenance')
+    ]
+    VEHICLE_TYPE_CHOICES = [
+        ('car', 'Car'),
+        ('truck', 'Truck'),
+        ('van', 'Van'),
+        ('suv', 'SUV')
+    ]
     VEHICLE_CLASS_CHOICES = [('economy', 'Economy'), ('standard', 'Standard'), ('sport', 'Sport'), ('luxury', 'Luxury')]
 
     vehicle_type = models.CharField(max_length=6, choices=VEHICLE_TYPE_CHOICES, default='car')
