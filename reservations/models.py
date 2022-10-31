@@ -17,7 +17,12 @@ class Vehicle(models.Model):
         ('van', 'Van'),
         ('suv', 'SUV')
     ]
-    VEHICLE_CLASS_CHOICES = [('economy', 'Economy'), ('standard', 'Standard'), ('sport', 'Sport'), ('luxury', 'Luxury')]
+    VEHICLE_CLASS_CHOICES = [
+        ('economy', 'Economy'),
+        ('standard', 'Standard'),
+        ('sport', 'Sport'),
+        ('luxury', 'Luxury')
+    ]
 
     vehicle_type = models.CharField(max_length=6, choices=VEHICLE_TYPE_CHOICES, default='car')
     vehicle_class = models.CharField(max_length=9, choices=VEHICLE_CLASS_CHOICES, default='standard')
@@ -33,7 +38,12 @@ class Vehicle(models.Model):
 
 class Reservations(models.Model):
 
-    VEHICLE_STATUS_CHOICES = [('available', 'Available'), ('reserved', 'Reserved'), ('rented', 'Rented'), ('maintenance', 'Maintenance')]
+    VEHICLE_STATUS_CHOICES = [
+        ('available', 'Available'),
+        ('reserved', 'Reserved'),
+        ('rented', 'Rented'),
+        ('maintenance', 'Maintenance')
+    ]
 
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     # status = models.CharField(max_length=11, choices=VEHICLE_STATUS_CHOICES, default='available')

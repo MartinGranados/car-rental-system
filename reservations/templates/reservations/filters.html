@@ -8,7 +8,7 @@
     Please contact us to reserve a vehicle for longer than 14 days.
 </div>
 
-<div id="date-form" class="">
+<div id="date-form">
   <form method="POST" > {% csrf_token %}
           <!-- begin row -->
           <div class="form-row">
@@ -172,30 +172,54 @@ function dateValidate()
 </script>
 <br><br>
     {% for vehicle in vehicles %}
-    <div class="card mb-4" style="max-width: 840px; padding: 5px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img class="card-img" src="{{ vehicle.image.url }}">
-            </div>
-            <!-- <div class="col-md-8"> -->
-                <div class="card-body col-md-4">
-                    <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
-                    <p class="card-text">{{ vehicle.seats }} seats</p>
-                </div>
-                <div class="card-body col-md-4" id="price">
-                
-                        ${{ vehicle.price_per_day }}/day, {{ rental_length }}
-                        
-                </div>
-            <!-- </div> -->
+    <div class="card mb-4" id="vehicle-card">
+      <div class="row no-gutters">
+        <div class="col-md-6">
+            <img class="card-img" src="{{ vehicle.image.url }}">
         </div>
-        <form method="POST" action="select/"> {% csrf_token %}
-          <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
-          <input type="hidden" name="rental_length" value="{{ rental_length }}">
-          <input type="hidden" name="status_start" value="{{ status_start }}">
-          <input type="hidden" name="status_end" value="{{ status_end }}">
-          <button class="btn btn-primary btn-block" type="submit" id="submit-select" name="submit_select">Select...</button>
-        </form>
+        <div class="col-md-6">
+          <div class="row no-gutters">
+            <div class="col-md-2">
+
+            </div>
+            <div class="card-body col-md-8">
+              <h5 class="card-title" style="text-transform: capitalize;">{{ vehicle }}</h5>
+            </div>
+            <div class="col-md-2">
+              
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              
+            </div>
+            <div class="card-body col-md-8" id="price">
+                    ${{ vehicle.price_per_day }}/day, {{ rental_length }}
+                    <p class="card-text">{{ vehicle.seats }} seats</p>
+            </div>
+            <div class="col-md-2">
+              
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              
+            </div>
+            <div class="card-body col-md-8">
+              <form method="POST" action="select/"> {% csrf_token %}
+                <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+                <input type="hidden" name="rental_length" value="{{ rental_length }}">
+                <input type="hidden" name="status_start" value="{{ status_start }}">
+                <input type="hidden" name="status_end" value="{{ status_end }}">
+                <button class="btn btn-primary btn-block" type="submit" id="submit-select" name="submit_select">Select...</button>
+              </form>
+            </div>
+            <div class="col-md-2">
+              
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     {% endfor %}
 
