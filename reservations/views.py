@@ -154,4 +154,5 @@ def confirm(request):
                 "status_end": status_end,
             },
         )
-
+    else:
+        return render('<html>"Hello world"</html>')
